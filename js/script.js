@@ -3,7 +3,11 @@ let todos = document.getElementById('todos');
 let input = document.getElementById('input');
 let classNum = 0;
 
-
+window.addEventListener('keypress', function(e){
+    if (e.key == 'Enter') {
+      addTask();
+    }
+})
 
 function addTask(){
     if (input.value !== ""){
@@ -17,7 +21,7 @@ function addTask(){
         check.setAttribute('class', 'li'+classNum);
         deleteBtn.setAttribute('class', 'li'+classNum+' delete-btn');
 
-        deleteBtn.textContent = "X";
+        deleteBtn.innerHTML = '<img src="./images/trash.png" alt="trash icon inside delete button" width="17px">';
         span.textContent = input.value;
 
         check.setAttribute('type', 'checkbox')
@@ -32,7 +36,7 @@ function addTask(){
      
     
         deleteBtn.addEventListener('click', function(e){
-            e.target.parentElement.remove();
+            li.remove();
         }) 
 
         
@@ -41,14 +45,6 @@ function addTask(){
         li.appendChild(deleteBtn); 
         todos.appendChild(li);
 
-        
-        
-        //let modif = document.createElement('button');
-        //modif.setAttribute('class', 'li'+classNum);
-        //modif.textContent = "Modfier"; 
-        //modif.addEventListener('click', modifyTask);
-        //li.appendChild(modif);
-         
         classNum += 1;
     } else {
         console.log('No task is given!');
@@ -60,6 +56,15 @@ function clearAll(){
     todos.innerHTML="";
 }
 
+function clearChecked(){
+    let lis = document.querySelectorAll('#todos li');
+    let checkbox = document.querySelectorAll('#todos li input');
+    for(let i=0; i<checkbox.length; i++){
+       if(checkbox[i].checked) {
+        lis[i].remove();
+       }
+    }
+}
 
 function modifyTask(){
     

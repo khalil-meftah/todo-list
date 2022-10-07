@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+:root {
+	--delete-btns-color: rgb(230, 230, 230);
+}
+html {height:100%;}
+body {
+	background: linear-gradient(to right,#02aab0, #00cdac);
+	font-size: 1.1em;
+	font-family: 'Cairo', sans-serif;
+}
+.todolist{
+	background-color: rgb(241, 241, 241);
+	padding: 1.5em;
+	border-radius: 7px;
+
+	position: absolute;
+  	top: 50%;
+ 	left:50%;
+  	transform: translate(-50%,-50%); 
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: 
+	"a a a b b b"
+	"c c d d d d"
+	"e e e e e e";
+	row-gap: 10px;
+	column-gap: 5px;
+}
+.todo-input {
+	width: 100%;
+	padding: 7px 10px;
+	border: 0;
+	border-radius: 5px;
+	grid-area: a;
+
+}
+button{
+	border: 0;
+	border-radius: 5px;
+}
+.add-btn {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 6px;
+	grid-area: b;
+}
+.add-btn img{
+	padding-top: 0px;	
+}
+.delete-all-btn{
+	grid-area: c;
+	background-color: var(--delete-btns-color);
+	height: 35px;
+}
+.delete-checked-btn{
+	grid-area: d;
+	background-color: var(--delete-btns-color);
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 2em 0 0 0;
+	grid-area: e;
+}
+li {
+	background-color: #fff;
+	padding: .7em;
+	border-radius: 7px;
+
+	width: 100%;
+	display: inline-grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: "a b b c";
+	margin-bottom: 5px;
+}
+li span{
+
+	grid-area: b;
+
+}
+.delete-btn{
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 6px;
+	grid-area: c;
+	justify-self: center;
+	width: 30px;
+	background-color: var(--delete-btns-color);
+}
+li::after{
+	display: block;
+}
+input[type='checkbox']{
+	appearance: none;
+	background-color: #fff;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1.15em;
+	height: 1.15em;
+	border: 0.095em solid currentColor;
+	border-radius: 0.15em;
+	justify-self: center;
+	align-self: center;
+
+	display: grid;
+	place-content: center;
+}
+input[type="checkbox"]::before {
+	content: "";
+	width: 0.65em;
+	height: 0.65em;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--form-control-color);
+  }
+  input[type="checkbox"]:checked::before {
+	
+	background-color: #17a060;
+	transform: scale(1);
+  }
+
