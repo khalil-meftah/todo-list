@@ -1,6 +1,6 @@
 # To-do list
 
-Simple To-do list website made with :
+To-do list website made with :
 1. Html/css
 2. JavaScript
 3. Bootstrap 5
